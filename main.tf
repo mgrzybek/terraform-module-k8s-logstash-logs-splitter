@@ -8,14 +8,16 @@ resource "kubernetes_config_map" "configmap" {
     logstash_conf = templatefile(
       "${path.module}/logstash.tmpl.conf",
       {
-        source_topics           = var.source_topics
-        destination_tech_topic  = var.destination_tech_topic
-        destination_audit_topic = var.destination_audit_topic
-        bootstrap_servers       = var.bootstrap_servers
-        log_key                 = var.log_key
-        log_value               = var.log_value
-        nested_log_key          = var.nested_log_key
-        nested_log_value        = var.nested_log_value
+        source_topics              = var.source_topics
+        destination_tech_topic     = var.destination_tech_topic
+        destination_audit_topic    = var.destination_audit_topic
+        bootstrap_servers          = var.bootstrap_servers
+        log_key                    = var.log_key
+        log_value                  = var.log_value
+        log_value_with_nested_json = var.log_value_with_nested_json
+        log_key_with_nested_json   = var.log_key_with_nested_json
+        nested_log_key             = var.nested_log_key
+        nested_log_value           = var.nested_log_value
       }
     )
     logstash_yml = <<-EOT
